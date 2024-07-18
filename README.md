@@ -86,12 +86,8 @@ Result: 35
 > 4
 Result: 4
 > 3
-Current RPN Expression: 4 3
-> +
-Result: 7
-> 5
-Current RPN Expression: 7 5
-> *
+Pending operation: 4 3
+> + 5 *
 Result: 35
 ```
 
