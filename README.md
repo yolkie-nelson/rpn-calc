@@ -55,7 +55,7 @@ npm run calc
 
 ## Example Inputs
 
-As the user, you have the flexibility to enter the RPN expression either as a single input, by inputting operands and operators individually, or a combination of both.
+As the user, you have the flexibility to enter the RPN expression as a single input, by inputting operands and operators individually, or a combination of both.
 
 ### Single Input Example
 
