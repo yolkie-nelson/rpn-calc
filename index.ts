@@ -2,34 +2,47 @@ import { question } from 'readline-sync';
 
 type Operator = '+' | '-' | '*' | '/';
 
-function main(): void {
-    const firstStr: string = question('Enter first number:\n');
-    const operator: string = question('Enter operator:\n');
-    const secondStr: string = question('Enter second number:\n');
+function rpnCalculator(): void {
+    const input: string = question('Enter RPN expression (e.g., "5 1 2 + 4 * + 3 -"):\n');
+    const result = evaluateRPN(input);
+    console.log(result);
+    rpnCalculator(); // Prompt for another input after showing the result
+}
 
-    const validInput: boolean = isNumber(firstStr) && isOperator(operator) && isNumber(secondStr)
+function evaluateRPN(expression: string): number | string {
+    const tokens = expression.split(' ');
+    const stack: number[] = [];
 
-    if (validInput) {
-        const firstNum: number = parseInt(firstStr);
-        const secondNum: number = parseInt(secondStr);
-        const result = calculate(firstNum, operator as Operator, secondNum);
-        console.log(result)
+    for (const token of tokens) {
+        if (isNumber(token)) {
+            stack.push(parseFloat(token));
+        } else if (isOperator(token)) {
+            if (stack.length < 2) {
+                return 'Invalid input: not enough operands for operator';
+            }
+            const secondNum = stack.pop()!;
+            const firstNum = stack.pop()!;
+            const result = calculate(firstNum, token as Operator, secondNum);
+            stack.push(result);
+        } else {
+            return `Invalid input: ${token}`;
+        }
+    }
+
+    if (stack.length === 1) {
+        return stack[0];
     } else {
-        console.log('\nInvalid input.\n');
-        main();
+        return 'Invalid input: too many operands';
     }
 }
 
-function isNumber(str: string): boolean
-{
-    const maybeNum = parseInt(str);
-    const isNum: boolean = !isNaN(maybeNum);
-    return isNum;
+function isNumber(str: string): boolean {
+    const maybeNum = parseFloat(str);
+    return !isNaN(maybeNum);
 }
 
-function calculate(firstNum: number, operator: Operator, secondNum: number) {
-    switch(operator)
-    {
+function calculate(firstNum: number, operator: Operator, secondNum: number): number {
+    switch(operator) {
         case '+':
             return firstNum + secondNum;
         case '-':
@@ -38,22 +51,13 @@ function calculate(firstNum: number, operator: Operator, secondNum: number) {
             return firstNum * secondNum;
         case '/':
             return firstNum / secondNum;
-    }
-}
-
-function isOperator(operator: string): boolean
-{
-    switch(operator)
-    {
-        case '+':
-        case '-':
-        case '*':
-        case '/':
-            return true;
         default:
-            return false;
-
+            throw new Error('Unsupported operator');
     }
 }
 
-main();
+function isOperator(operator: string): boolean {
+    return operator === '+' || operator === '-' || operator === '*' || operator === '/';
+}
+
+rpnCalculator();
