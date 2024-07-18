@@ -10,7 +10,7 @@ describe('RPN Calculator', () => {
     expect(result).toBe('Result: 5');
 
     result = calculator('8');
-    expect(result).toBe('Current RPN Expression: 5 8');
+    expect(result).toBe('Pending operation: 5 8');
 
     result = calculator('+');
     expect(result).toBe('Result: 13');
@@ -29,13 +29,13 @@ describe('RPN Calculator', () => {
     expect(result).toBe('Result: -3');
 
     result = calculator('-2');
-    expect(result).toBe('Current RPN Expression: -3 -2');
+    expect(result).toBe('Pending operation: -3 -2');
 
     result = calculator('*');
     expect(result).toBe('Result: 6');
 
     result = calculator('5');
-    expect(result).toBe('Current RPN Expression: 6 5');
+    expect(result).toBe('Pending operation: 6 5');
 
     result = calculator('+');
     expect(result).toBe('Result: 11');
@@ -46,13 +46,13 @@ describe('RPN Calculator', () => {
     expect(result).toBe('Result: 5');
 
     result = calculator('9');
-    expect(result).toBe('Current RPN Expression: 5 9');
+    expect(result).toBe('Pending operation: 5 9');
 
     result = calculator('1');
-    expect(result).toBe('Current RPN Expression: 5 9 1');
+    expect(result).toBe('Pending operation: 5 9 1');
 
     result = calculator('-');
-    expect(result).toBe('Current RPN Expression: 5 8');
+    expect(result).toBe('Pending operation: 5 8');
 
     result = calculator('/');
     expect(result).toBe('Result: 0.625');
