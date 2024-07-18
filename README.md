@@ -61,7 +61,7 @@ As the user, you have the flexibility to enter the RPN expression as a single in
 
 ```
 > 5 4 3 + *
-Result: 8
+Result: 35
 ```
 
 ### Individual Inputs Example
