@@ -25,7 +25,7 @@ export function calculator(input: string): string {
     } else if (isOperator(token)) {
       if (tempStack.length < 2) {
         const message = 'Invalid input: not enough operands for operator';
-        return `${message}\nCurrent expression: ${stack.join(' ')}`;
+        return `${message}\nPending operation: ${stack.join(' ')}`;
       }
 
       const secondNum = tempStack.pop() as number;
@@ -34,12 +34,12 @@ export function calculator(input: string): string {
 
       if (isNaN(result)) {
         const message = `Invalid operation: cannot divide by zero`;
-        return `${message}\nCurrent expression: ${stack.join(' ')}`;
+        return `${message}\nPending operation: ${stack.join(' ')}`;
       }
       tempStack.push(result);
     } else {
       const message = `Invalid input: ${token}`;
-      return `${message}\nCurrent expression: ${stack.join(' ')}`;
+      return `${message}\nPending operation: ${stack.join(' ')}`;
     }
   }
 
@@ -49,7 +49,7 @@ export function calculator(input: string): string {
     const resultMessage = `Result: ${stack[0]}`;
     return resultMessage;
   } else {
-    const stackMessage = `Current RPN Expression: ${stack.join(' ')}`;
+    const stackMessage = `Pending operation: ${stack.join(' ')}`;
     return stackMessage;
   }
 }
