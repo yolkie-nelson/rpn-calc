@@ -53,9 +53,9 @@ npm run build
 npm run calc
 ```
 
-### Reset Calculator
+### Reset the Calculator
 
-While the calculator is running, you can reset it by inputing the following:
+When a result is returned, it will be used as the first number in the stack for subsequent operations. To start a new computation, type `reset` to clear the stack.
 
 ```
 reset
