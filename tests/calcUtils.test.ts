@@ -1,4 +1,3 @@
-
 import { calculate, isNumber, isOperator } from '../src/calcUtils';
 
 describe('Calculator Utils', () => {
