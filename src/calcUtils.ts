@@ -7,7 +7,7 @@ export function isNumber(str: string): boolean {
 export function calculate(
   firstNum: number,
   operator: string,
-  secondNum: number
+  secondNum: number,
 ): number {
   switch (operator) {
     case '+':
