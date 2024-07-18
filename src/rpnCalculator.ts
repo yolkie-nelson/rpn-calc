@@ -1,32 +1,59 @@
-import { calculate, isNumber, isOperator, Operator } from './calcUtils';
+import { calculate, isNumber, isOperator } from './calcUtils';
 
-export function calculator(expression: string): number | string {
-    const tokens = expression.split(' ');
-    const stack: number[] = [];
+let stack: number[] = [];
 
-    for (const token of tokens) {
-        if (isNumber(token)) {
-            stack.push(parseFloat(token));
-        } else if (isOperator(token)) {
-            if (stack.length < 2) {
-                return 'Invalid input: not enough operands for operator';
-            }
-            const secondNum = stack.pop()!;
-            const firstNum = stack.pop()!;
-            try {
-                const result = calculate(firstNum, token as Operator, secondNum);
-                stack.push(result);
-            } catch (error) {
-                return (error as Error).message;
-            }
-        } else {
-            return `Invalid input: ${token}`;
-        }
-    }
+export function calculator(input: string): string {
+  if (input.trim().toLowerCase() === 'reset') {
+    resetCalculator();
+    return 'Calculator has been reset';
+  }
 
-    if (stack.length === 1) {
-        return stack[0];
+  if (input.trim() === '') {
+    return '\nExiting RPN Calculator......';
+  }
+
+  if (input.trim().toLowerCase() === 'q') {
+    return '\nExiting RPN Calculator......';
+  }
+
+  const tokens: string[] = input.split(' ');
+  const tempStack = [...stack];
+
+  for (const token of tokens) {
+    if (isNumber(token)) {
+      tempStack.push(parseFloat(token));
+    } else if (isOperator(token)) {
+      if (tempStack.length < 2) {
+        const message = 'Invalid input: not enough operands for operator';
+        return `${message}\nCurrent expression: ${stack.join(' ')}`;
+      }
+
+      const secondNum = tempStack.pop() as number;
+      const firstNum = tempStack.pop() as number;
+      const result = calculate(firstNum, token, secondNum);
+
+      if (isNaN(result)) {
+        const message = `Invalid operation: cannot divide by zero`;
+        return `${message}\nCurrent expression: ${stack.join(' ')}`;
+      }
+      tempStack.push(result);
     } else {
-        return 'Invalid input: too many operands';
+      const message = `Invalid input: ${token}`;
+      return `${message}\nCurrent expression: ${stack.join(' ')}`;
     }
+  }
+
+  stack = tempStack;
+
+  if (stack.length === 1) {
+    const resultMessage = `Result: ${stack[0]}`;
+    return resultMessage;
+  } else {
+    const stackMessage = `Current RPN Expression: ${stack.join(' ')}`;
+    return stackMessage;
+  }
+}
+
+export function resetCalculator(): void {
+  stack = [];
 }

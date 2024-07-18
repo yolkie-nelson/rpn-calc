@@ -1,28 +1,36 @@
-export type Operator = '+' | '-' | '*' | '/';
+import { calculator } from './rpnCalculator';
 
 export function isNumber(str: string): boolean {
-    const maybeNum = parseFloat(str);
-    return !isNaN(maybeNum);
+  return !isNaN(parseFloat(str));
 }
 
-export function calculate(firstNum: number, operator: Operator, secondNum: number): number {
-    switch (operator) {
-        case '+':
-            return firstNum + secondNum;
-        case '-':
-            return firstNum - secondNum;
-        case '*':
-            return firstNum * secondNum;
-        case '/':
-            if (secondNum === 0) {
-                throw new Error('Division by zero');
-            }
-            return firstNum / secondNum;
-        default:
-            throw new Error('Unsupported operator');
-    }
+export function calculate(
+  firstNum: number,
+  operator: string,
+  secondNum: number,
+): number {
+  switch (operator) {
+    case '+':
+      return firstNum + secondNum;
+    case '-':
+      return firstNum - secondNum;
+    case '*':
+      return firstNum * secondNum;
+    case '/':
+      if (secondNum === 0) {
+        return NaN;
+      }
+      return firstNum / secondNum;
+    default:
+      return NaN;
+  }
 }
 
-export function isOperator(operator: string): boolean {
-    return operator === '+' || operator === '-' || operator === '*' || operator === '/';
+export function isOperator(token: string): boolean {
+  return token === '+' || token === '-' || token === '*' || token === '/';
+}
+
+export function handleCalculation(values: string[]): string {
+  const combinedInput = values.join(' ');
+  return calculator(combinedInput);
 }
