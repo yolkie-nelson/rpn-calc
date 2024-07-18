@@ -70,11 +70,11 @@ Result: 8
 > 5
 Result: 5
 > 4
-Current RPN Expression: 5 4
+Pending operation: 5 4
 > 3
-Current RPN Expression: 5 4 3
+Pending operation: 5 4 3
 > +
-Current RPN Expression: 5 7
+Pending operation: 5 7
 > *
 Result: 35
 >
