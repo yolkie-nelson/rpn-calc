@@ -53,28 +53,6 @@ npm run build
 npm run calc
 ```
 
-### Reset the Calculator
-
-When a result is returned, it will be used as the first number in the stack for subsequent operations. To start a new computation, type `reset` to clear the stack.
-
-```
-reset
-```
-
-### Exit Calculator
-
-To exit the calculator, input q or enter an empty input
-
-```
-q
-```
-
-### Run Tests
-
-```
-npm test
-```
-
 ## Example Inputs
 
 As the user, you have the flexibility to enter the RPN expression either as a single input, by inputting operands and operators individually, or a combination of both.
@@ -115,6 +93,28 @@ Result: 7
 Current RPN Expression: 7 5
 > *
 Result: 35
+```
+
+### Reset the Calculator
+
+When a result is returned, it will be used as the first number in the stack for subsequent operations. To start a new computation, type `reset` to clear the stack.
+
+```
+reset
+```
+
+### Exit Calculator
+
+To exit the calculator, input q or enter an empty input
+
+```
+q
+```
+
+### Run Tests
+
+```
+npm test
 ```
 
 ## Understanding Reverse Polish Notation (RPN)
