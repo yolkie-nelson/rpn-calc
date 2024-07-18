@@ -6,7 +6,7 @@ function rpnCalculator(): void {
     const input: string = question('Enter RPN expression (e.g., "5 1 2 + 4 * + 3 -"):\n');
     const result = evaluateRPN(input);
     console.log(result);
-    rpnCalculator(); // Prompt for another input after showing the result
+    rpnCalculator(); 
 }
 
 function evaluateRPN(expression: string): number | string {
