@@ -34,3 +34,14 @@ export function handleCalculation(values: string[]): string {
   const combinedInput = values.join(' ');
   return calculator(combinedInput);
 }
+
+export const exitMessage = '\x1b[31m\nExiting RPN Calculator......\x1b[0m';
+export const resetMessage = 'Calculator has been reset';
+export const invalidInputMessage = (token: string) =>
+  `\x1b[31mInvalid input: ${token}\x1b[0m`;
+export const invalidOperationMessage = `\x1b[31mInvalid operation: cannot divide by zero\x1b[0m`;
+export const notEnoughOperandsMessage =
+  '\x1b[31mInvalid input: not enough operands for operator\x1b[0m';
+export const pendingOperationMessage = (stack: number[]) =>
+  `\x1b[33mPending operation: ${stack.join(' ')}\x1b[0m`;
+export const resultMessage = (result: number) => `Result: ${result}`;
