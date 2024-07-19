@@ -101,7 +101,7 @@ reset
 
 ### Exit Calculator
 
-To exit the calculator, input q or enter an empty input
+To exit the calculator, input q or enter CTRL+D
 
 ```
 q

@@ -13,5 +13,5 @@ export const calculatorArt = `
 | | . | 0 | = | | / | |          Please see README for more
 | |___|___|___| |___| |      info about Reverse Polish Notation.
 |_____________________|
-                                Enter q to exit the calculator.
+                           Enter q or CTRL+D to exit the calculator.
 `;
