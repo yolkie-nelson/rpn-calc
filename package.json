@@ -12,7 +12,7 @@
     "format": "prettier --write ."
   },
   "bin": {
-    "dt-rpn-calc": "./bin/index.js"
+    "rpn-calc": "./bin/index.js"
   },
   "keywords": [],
   "author": "",
