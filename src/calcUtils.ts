@@ -30,11 +30,6 @@ export function isOperator(token: string): boolean {
   return token === '+' || token === '-' || token === '*' || token === '/';
 }
 
-export function handleCalculation(values: string[]): string {
-  const combinedInput = values.join(' ');
-  return calculator(combinedInput);
-}
-
 export const exitMessage = '\x1b[31m\nExiting RPN Calculator......\x1b[0m';
 export const resetMessage = 'Calculator has been reset';
 export const invalidInputMessage = (token: string) =>
